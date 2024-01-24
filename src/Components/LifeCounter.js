@@ -7,26 +7,30 @@ const [player2health, setplayer2health] = useState(20);
 
 
 
-
-
-
-
-
   return (
     <Container>
         <Title>Life counter</Title>
         <Battlefield>
-            <Player1>{player1health}</Player1>
-            <Player2>{player2health}</Player2>
+            <Player1>
+                <p>{player1health}</p>
+                <AescendingButton onClick={() => setplayer1health(player1health +1)}/>
+                <DescendingButton onClick={() => setplayer1health(player1health -1)}/>
+                <AddFive onClick={() => setplayer1health(player1health +5)}>+5</AddFive>
+            </Player1>
+            <Player2>{player2health}
+                <AescendingButton onClick={() => setplayer2health(player2health +1)}/>
+                <DescendingButton onClick={() => setplayer2health(player2health -1)}/>
+                <AddFive onClick={() => setplayer2health(player2health +5)}>+5</AddFive>
+            </Player2>
         </Battlefield>
     </Container>
 
-    //Two players
-    //Life totals that can add or subtract
-    //Starting Life totals at 20
-    //Life counter stops at 0, but can go as high as needed
-    //Quick add buttons (+1,+5,+10,+25)
+    //Quick add buttons (+5)
     //Quick minus buttons (-1,-5,-10,-25)
+    //reset button
+    //Manual Change button amount - tap, type, set
+    //have playter choose background color
+    //
     //? For Later - add poison section
 
     )
@@ -50,7 +54,7 @@ const Battlefield = styled.div`
     background: red;
     flex-grow: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     
 `
 const Player1 = styled.div`
@@ -58,7 +62,8 @@ const Player1 = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
+    height: 50%;
+    position: relative;
     `
 const Player2 = styled.div`
     background-color: #34495e;
@@ -66,8 +71,38 @@ const Player2 = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
+    height: 50%;
+    position: relative;
+    `
+
+const DescendingButton = styled.button`
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    opacity: 0%;
+    &:active{
+        opacity: 10%;
+    }
+    `
+const AescendingButton = styled.button`
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 50%;
+    top: 0;
+    opacity:0%;
+    &:active{
+        opacity: 10%;
+    }
 `
-const Descendingbutton = styled.button`
+const AddFive = styled.button`
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 5rem;
+    border-radius: 25%;
+    margin: 1rem;
 
 `
